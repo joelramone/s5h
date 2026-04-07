@@ -1,0 +1,21 @@
+[project]
+name = "s5h-ssh-manager"
+version = "0.1.0"
+description = "Gestor de conexiones SSH para múltiples ambientes"
+requires-python = ">=3.11"
+dependencies = [
+  "pydantic>=2.7.0",
+  "python-dotenv>=1.0.1",
+  "textual>=0.62.0",
+]
+
+[project.scripts]
+s5h = "s5h.main:run"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["s5h*"]
