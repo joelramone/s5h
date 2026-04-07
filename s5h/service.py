@@ -21,6 +21,10 @@ class SSHService:
 
     def connect(self, environment_name: str) -> int:
         command = self.build_command(environment_name)
+        return self.connect_with_command(command)
+
+    @staticmethod
+    def connect_with_command(command: list[str]) -> int:
         result = subprocess.run(command, check=False)
         return result.returncode
 

@@ -172,11 +172,8 @@ class SSHManagerApp(App[None]):
         try:
             service = SSHService(self.config_data)
             command = service.build_command(selected_name)
-            self.suspend()
-            try:
-                service.connect(selected_name)
-            finally:
-                self.resume()
+            with self.suspend():
+                service.connect_with_command(command)
             self.push_screen(MessageScreen(f"Conexión finalizada: {' '.join(command)}"))
         except Exception as error:  # pylint: disable=broad-except
             self.push_screen(MessageScreen(f"Error: {error}"))
