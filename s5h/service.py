@@ -26,8 +26,8 @@ class SSHService:
 
     @staticmethod
     def connect_with_command(command: list[str]) -> int:
-        status = pty.spawn(command)
-        return os.waitstatus_to_exitcode(status)
+        result = subprocess.run(command, check=False)
+        return result.returncode
 
     @staticmethod
     def validate_keypair_path(path: str) -> Path:
