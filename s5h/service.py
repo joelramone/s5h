@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-import subprocess
+import os
+import pty
 from pathlib import Path
 
 from s5h.models import AppConfig
